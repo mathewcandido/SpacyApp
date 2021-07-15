@@ -1,0 +1,58 @@
+{
+  "Eventos": [
+    {
+      "Nome": "1° Meetup  RioJS",
+      "Estado": "Rio de janeiro",
+      "Preço": "R$:150",
+      "Cidade": "Rio de Janeiro",
+      "Descrição": "Javascript Vanilla",
+      "Data": "12/08/2021",
+      "id": 1
+    },
+    {
+      "Nome": "1° Meetup  RioJS",
+      "Estado": "Rio de janeiro",
+      "Preço": "R$:150",
+      "Cidade": "Rio de Janeiro",
+      "Descrição": "Javascript Vanilla",
+      "Data": "12/08/2021",
+      "id": 2
+    },
+    {
+      "Nome": "1° Meetup NikitReac ",
+      "Estado": "Rio de Janeiro",
+      "Preço": "R$:200",
+      "Cidade": "Niterói",
+      "Descrição": "Palestra com foco no framework do momento",
+      "Data": "25/10/2021",
+      "id": 3
+    },
+    {
+      "Nome": "10° Meetup BlumenauJS",
+      "Estado": "Santa Catarina",
+      "Preço": "R$:180",
+      "Cidade": "Blumenau",
+      "Descrição": "Palestrante Roger Melo ",
+      "Data": "20/07/2021",
+      "id": 4
+    },
+    {
+      "Nome": "Imersão React.js com Next ",
+      "Estado": "SC",
+      "Preço": "R$:190",
+      "Cidade": "Blumenau",
+      "Descrição": "\no Framework Queridinho das empresas ! ",
+      "Data": "15/01/2022",
+      "id": 6
+    },
+    {
+      "Nome": "Imersão Vue.js ",
+      "Estado": "SC",
+      "Preço": "R$:190",
+      "Cidade": "Blumenau",
+      "Descrição": "Tudo que você precisa saber para entrar no mercado o pé direito ! ",
+      "Data": "25/08/2021",
+      "id": 7
+    }
+  ]
+}

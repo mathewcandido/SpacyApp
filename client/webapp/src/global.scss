@@ -1,0 +1,17 @@
+
+$bg_black: rgba(0, 0, 0, 1);
+$font_white: rgba(255, 255, 255, 1);
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $bg_black;
+    color: $font_white;
+    font: 1em Poppins,sans-serif;
+    font-weight: 500;
+    line-height: 24px;
+}
