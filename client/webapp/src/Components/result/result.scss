@@ -24,7 +24,7 @@ section.exibirResultados{
         justify-content: space-between;
         flex-direction:row;
         flex-wrap: wrap;
-
+       
     article{
         width:48%;
         min-width:400px;
@@ -36,6 +36,15 @@ section.exibirResultados{
         justify-content: flex-start;
         flex-direction: column;
         flex-wrap: wrap;
+        --webkit-transition: all 0.5s 0s ease;
+        -moz-transition: all 0.5s 0s ease;
+        -o-transition: all 0.5s 0s ease;
+        transition: all 0.5s 0s ease;
+         &:hover{
+
+            border: solid 2px rgb(240, 240, 115);
+        }
+
 
         @media screen and (min-width:200px) and (max-width:900px){
             &{

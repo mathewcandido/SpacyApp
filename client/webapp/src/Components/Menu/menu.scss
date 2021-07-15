@@ -39,10 +39,13 @@ header{
         display: inline-block;
         font-size:16px;
         color: rgba(255,255,255,1);
-        text-decoration: none;      
+        text-decoration: none;  
+        transition: ease-in-out 1.5s;
         }
+        
         li .link:hover{
              color: $bg_yellow;
+             
         }
       }
     }

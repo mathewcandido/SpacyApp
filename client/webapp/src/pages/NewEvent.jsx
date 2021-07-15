@@ -3,19 +3,20 @@ import axios from "axios";
 import { Menu } from '../Components/Menu/Menu.jsx'
 import { Footer } from '../Components/footer/Footer.jsx'
 import './newevent.scss'
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom';
 
 
-  
+ 
 function alertanimation() {
-
-  swal({
-    title: "Parabéns",
-    text: "Evento Criado com Sucesso",
-    icon: "success",
-    button: "Click aqui"
-  });
+ 
+Swal.fire({
+  position: 'top-center',
+  icon: 'success',
+  title: 'Evento Salvo com Sucesso',
+  showConfirmButton: false,
+  timer: 1500
+})
 }
 
 export const NewEvent = () => {
