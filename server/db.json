@@ -71,6 +71,15 @@
       "Descrição": "Tudo que você precisa saber sobre a Linguagem mais usada no Mundo !",
       "Data": "15/08/2021",
       "id": 9
+    },
+    {
+      "Nome": "Campos Party ",
+      "Estado": "SC",
+      "Preço": "R$:190",
+      "Cidade": "Blumenau",
+      "Descrição": "O maior Evento tecnológico do ano te espera !",
+      "Data": "15/08/2021",
+      "id": 10
     }
   ]
 }

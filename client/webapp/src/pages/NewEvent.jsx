@@ -5,7 +5,7 @@ import { Footer } from '../Components/footer/Footer.jsx'
 import './newevent.scss'
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom';
-
+import Input from "react-input-mask";
 
  
 function alertanimation() {
@@ -28,7 +28,7 @@ export const NewEvent = () => {
     let path = '/'
     setTimeout(() => {
           history.push(path)
-    }, 2000);
+    }, 3000);
 
 
   }
@@ -51,6 +51,7 @@ export const NewEvent = () => {
     e.preventDefault()
     setLoading(true);
     setIsError(false);
+    
     const data = {
       Nome: name,
       Estado: est,
@@ -108,8 +109,11 @@ export const NewEvent = () => {
             <p>PASSO 2</p>
             <h2>Quando será e quanto custará o ingresso?</h2>
             <div>
-              <input
+              <Input
                 type="data"
+                guide={false}
+                showMask={false}
+                mask="99/99/9999" 
                 value={dates}
                 placeholder="Data do evento"
                 required

@@ -49,12 +49,12 @@ export const Home = () => {
                 <article>
                     <section className="contentTitle">
                         <h1>Todos os eventos de tecnologia<br />reunidos em um só lugar.</h1>
-                        <button>Buscar Evento</button>
+                        <button><a href="#busca">Buscar Evento</a></button>
                     </section>
                 </article>
             </section>
 
-            <section className="contentForm">
+            <section className="contentForm" id="busca" >
                 <form>
                     <h2>Filtros</h2>
                     <ul>
@@ -67,10 +67,10 @@ export const Home = () => {
                         <li>
                             <select name="cidade" id="cidade" style={seta}>
                                 <option >Selecione uma Cidade</option>
-                                <option value="Blumenal">Rio de Janeiro</option>
-                                <option value="Blumenal">Blumenal</option>
-                                <option value="Blumenal">Blumenal</option>
-                                <option value="Blumenal">Blumenal</option>
+                                <option value="Blumenau">Navegantes</option>
+                                <option value="Blumenau">Blumenau</option>
+                                <option value="Blumenau">Blumenau</option>
+                                <option value="Blumenau">Blumenau</option>
                             </select>
                         </li>
                         <li>

@@ -77,6 +77,18 @@ main.container{
     font-weight: 500;
     letter-spacing: .05rem; 
     }
+    &>Input{
+        outline: none;
+        border: none;
+        width:47%;
+        padding:10px;
+        background-color:rgb(23, 23, 23);
+        color:#BCBCBC;
+        font-size:18px;
+        font-weight: 500;
+        letter-spacing: .05rem; 
+        }
+    
     }
     &>button{
         font-weight:600;
@@ -88,6 +100,10 @@ main.container{
         background-color:rgb(255, 187, 55);
         border: none;
         cursor: pointer;
+        transition: ease-in-out 1s;
+        &:hover{
+            background-color:rgb(255, 218, 117) ;
+        }
     }
 
 

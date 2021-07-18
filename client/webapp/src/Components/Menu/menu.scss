@@ -28,25 +28,29 @@ header{
         li{
         list-style:none;  
         width: auto;
-        }
+        
 
-        li:nth-child(1){
+        &:nth-child(1){
         padding-right:50px;
         }
 
-        li .link{
+        .link{
         width:auto;
         display: inline-block;
         font-size:16px;
         color: rgba(255,255,255,1);
         text-decoration: none;  
-        transition: ease-in-out 1.5s;
-        }
-        
-        li .link:hover{
+        transition: ease-in-out 1s;
+        &:hover{
              color: $bg_yellow;
+
              
         }
+
+        }
+    }
+        
+        
       }
     }
 

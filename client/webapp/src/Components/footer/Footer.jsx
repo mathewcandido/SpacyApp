@@ -11,7 +11,7 @@ export const Footer= ()=>{
         <img src={logoFooter} alt="logo spacy"/>         
         <p>Spacy Inc. 2021 - &copy; All rights reserved</p>
         <nav>
-            <Link to=""><img src={githubIcon} alt="icone github" /></Link>
+           
             <Link to=""><img src={githubIcon} alt="icone instagram" /></Link>
             </nav>
         </section>
