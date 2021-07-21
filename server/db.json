@@ -80,6 +80,15 @@
       "Descrição": "O maior Evento tecnológico do ano te espera !",
       "Data": "15/08/2021",
       "id": 10
+    },
+    {
+      "Nome": "Imersão .Net .NetCore",
+      "Estado": "Paraná",
+      "Preço": "R$:200",
+      "Cidade": "Maringá",
+      "Descrição": "O Melhor Evento do Ano espera por Você ! ",
+      "Data": "15/08/2021",
+      "id": 11
     }
   ]
 }

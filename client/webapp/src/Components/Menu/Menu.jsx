@@ -14,7 +14,7 @@ export const Menu= ()=>{
                   </div>
                   <nav>
                       <ul> 
-                          <li><Link to="/" className="link a">Eventos</Link></li>
+                          <li><Link  to="/" className="link a">Eventos</Link></li>
                           <li><Link to="/novoevento" className="link b">Novo evento</Link></li>
                       </ul>
                   </nav>

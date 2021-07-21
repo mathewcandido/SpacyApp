@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from '../Components/Menu/Menu.jsx';
-import { Result } from '../Components/result/Result.jsx';
 import { Footer } from '../Components/footer/Footer.jsx';
 import axios from "axios";
+import { Result } from '../Components/result/Result.jsx';
 import './home.scss';
 //  Import IMAGE
 import details from '../assets/Details.png'
@@ -12,6 +12,7 @@ import setaIcon from '../assets/seta.svg'
 
 export const Home = () => {
 
+    const [inp, setInp] = useState("");
     // get API  
     const [eventos, setEventos] = useState([])
     useEffect(() => {
@@ -46,12 +47,12 @@ export const Home = () => {
         <>
             <Menu />
             <section className="content" style={bgImage}>
-                <article>
+                <div className="chamada" >
                     <section className="contentTitle">
                         <h1>Todos os eventos de tecnologia<br />reunidos em um só lugar.</h1>
                         <button><a href="#busca">Buscar Evento</a></button>
                     </section>
-                </article>
+                </div>
             </section>
 
             <section className="contentForm" id="busca" >
@@ -59,7 +60,13 @@ export const Home = () => {
                     <h2>Filtros</h2>
                     <ul>
                         <li>
-                            <input type="search" name="search" id="search" placeholder="Busca" />
+                            <input
+                                type="search"
+                                name="search"
+                                id="search"
+                                placeholder="Busca"
+                                onChange={(e) => setInp(e.target.value)}
+                            />
                             <button>
                                 <img src={searchIcon} alt="Botão de busca" />
                             </button>
@@ -87,10 +94,24 @@ export const Home = () => {
             </section>
 
             <main className="contentMain">
+                <section className="exibirResultados">
+                    {
+                        eventos.filter((val) => {
+                            if (inp == "") {
+                                return val
+                            } else if (val.Nome.toLowerCase().includes(inp.toLowerCase())) {
+                                return val
+                            }
 
-                <Result data={eventos} />
-
+                        }).map((el) => {
+                            return (
+                                <Result res={el} />
+                            )
+                        })}
+                </section>
             </main>
+
+
             <Footer />
         </>
     )

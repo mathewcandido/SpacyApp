@@ -1,36 +1,11 @@
 
-section.exibirResultados{
-    width: 90%;
-    height: auto;
-    padding-bottom: 20px;
-    display:flex;
-    justify-content: center;
-    flex-direction:row;
-    flex-wrap: wrap;
-    // background-color:red;
-    margin-top: 0;
 
-    &>h3{
-        position:absolute;
-        left:5%;
-        color:#BCBCBC;
-    }
-
-    div{ 
-        width: 100%;
-        height: auto;
-        padding-bottom: 20px;
-        display:flex;
-        justify-content: space-between;
-        flex-direction:row;
-        flex-wrap: wrap;
-       
     article{
         width:48%;
-        min-width:400px;
+        min-width:320px;
         height:auto;
         padding: 18px;
-        margin-top: 4%;
+        margin-top: 10px;
         background-color:#171717 ;
         display:flex;
         justify-content: flex-start;
@@ -77,6 +52,8 @@ section.exibirResultados{
         display:flex;
         justify-content: flex-start;
         flex-direction: row; 
+        max-width: 220px;
+        
 
         img{
             width:18px;
@@ -91,5 +68,4 @@ section.exibirResultados{
         }
         }
     }
-  }
-}
+  
