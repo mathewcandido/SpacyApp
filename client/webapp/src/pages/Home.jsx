@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from '../Components/Menu/Menu.jsx';
 import { Footer } from '../Components/footer/Footer.jsx';
 import axios from "axios";
@@ -6,13 +6,13 @@ import { Result } from '../Components/result/Result.jsx';
 import './home.scss';
 //  Import IMAGE
 import details from '../assets/Details.png'
-import searchIcon from '../assets/search.svg'
+import searchIcons from '../assets/search.svg'
 import setaIcon from '../assets/seta.svg'
+
 
 
 export const Home = () => {
 
-    const [inp, setInp] = useState("");
     // get API  
     const [eventos, setEventos] = useState([])
     useEffect(() => {
@@ -26,6 +26,7 @@ export const Home = () => {
             })
 
     }, [])
+
 
 
     const seta = {
@@ -42,51 +43,63 @@ export const Home = () => {
         backgroundSize: '20rem 37rem',
         backgroundRepeat: 'no-repeat',
     }
+    // select Estado
+    const [selectEstado, setSelectEstado] = useState('Selecione uma cidade')
+    const handleSelectEstado = (e) => {
+        setSelectEstado(e.target.value)
+    }
+    const estado = eventos
+    const listEstado = estado.map((item) => {
+        return (
+            <option value={item.Estado} key={item.id}>{item.Estado}</option>
+        )
+    })
+
+    // Busca
+    const [busca, setBusca] = useState('')
+    const handleBusca = (e) => {
+        setBusca(e.target.value)
+    }
 
     return (
         <>
             <Menu />
-            <section className="content" style={bgImage}>
-                <div className="chamada" >
+            <section className="content" style={bgImage} >
+                <article>
                     <section className="contentTitle">
                         <h1>Todos os eventos de tecnologia<br />reunidos em um só lugar.</h1>
                         <button><a href="#busca">Buscar Evento</a></button>
                     </section>
-                </div>
+                </article>
             </section>
 
-            <section className="contentForm" id="busca" >
-                <form>
+            <section className="contentForm" id="busca">
+                <form >
                     <h2>Filtros</h2>
                     <ul>
                         <li>
                             <input
                                 type="search"
-                                name="search"
+                               
+                                autocomplete="off"
+                                value={busca}
                                 id="search"
                                 placeholder="Busca"
-                                onChange={(e) => setInp(e.target.value)}
-                            />
-                            <button>
-                                <img src={searchIcon} alt="Botão de busca" />
+                                onChange={handleBusca} />
+                            <button disabled >
+                                <img src={searchIcons} alt="Botão de busca" />
                             </button>
                         </li>
                         <li>
-                            <select name="cidade" id="cidade" style={seta}>
-                                <option >Selecione uma Cidade</option>
-                                <option value="Blumenau">Navegantes</option>
-                                <option value="Blumenau">Blumenau</option>
-                                <option value="Blumenau">Blumenau</option>
-                                <option value="Blumenau">Blumenau</option>
-                            </select>
-                        </li>
-                        <li>
-                            <select name="estado" id="estado" style={seta} >
-                                <option >Selecione um Estado</option>
-                                <option value="Santa Catarina">Santa Catarina</option>
-                                <option value="Rio de Janeiro">Rio de Janeiro</option>
-                                <option value="São Paulo">São Paulo</option>
-                                <option value="Minas Gerais">Minas Gerais</option>
+                            <select
+                                style={seta}
+                                value={selectEstado}
+                                onChange={handleSelectEstado}>
+                                <option
+                                    disable="true"
+                                    value>Selecione um Estado
+                                </option>
+                                {listEstado}
                             </select>
                         </li>
                     </ul>
@@ -94,24 +107,11 @@ export const Home = () => {
             </section>
 
             <main className="contentMain">
-                <section className="exibirResultados">
-                    {
-                        eventos.filter((val) => {
-                            if (inp == "") {
-                                return val
-                            } else if (val.Nome.toLowerCase().includes(inp.toLowerCase())) {
-                                return val
-                            }
-
-                        }).map((el) => {
-                            return (
-                                <Result res={el} />
-                            )
-                        })}
-                </section>
+                <Result
+                    api={eventos}
+                    busca={busca}
+                    estados={selectEstado} />
             </main>
-
-
             <Footer />
         </>
     )
