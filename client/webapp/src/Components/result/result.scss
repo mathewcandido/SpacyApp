@@ -22,7 +22,7 @@ section.exibirResultados{
         justify-content: space-between;
         flex-direction:row;
         flex-wrap: wrap;
-
+      
     article{
         width:48%;
         min-width:400px;
@@ -39,6 +39,23 @@ section.exibirResultados{
         -moz-transition: all 0.5s 0s ease;
         -o-transition: all 0.5s 0s ease;
         transition: all 0.5s 0s ease;
+        button{
+            padding: 10px;
+            color: white;
+            border-radius:2px;
+            margin: 3px 2px 0 0;
+            cursor: pointer;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+
+            background-color: #312b2b;
+            border: 1px solid rgba(204, 204, 204,0.2);
+            &:hover{
+                background-color: #423636;
+            }
+        }
          &:hover{
         background-color:rgba(19, 18, 18, 0.788);
             border: solid 2px rgba(255, 188, 55, 0.144);

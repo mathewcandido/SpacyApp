@@ -5,11 +5,11 @@ import { NewEvent } from './pages/NewEvent.jsx'
 
 export const Router= ()=>{
     return(
-        <>
+       
         <Switch>
           <Route path='/novoevento' component={NewEvent}/>
           <Route path='/' exact component={Home}/>
         </Switch>   
-        </>
+        
     )
 }

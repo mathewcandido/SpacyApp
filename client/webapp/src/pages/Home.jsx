@@ -4,6 +4,7 @@ import { Footer } from '../Components/footer/Footer.jsx';
 import axios from "axios";
 import { Result } from '../Components/result/Result.jsx';
 import './home.scss';
+
 //  Import IMAGE
 import details from '../assets/Details.png'
 import searchIcons from '../assets/search.svg'
@@ -16,7 +17,7 @@ export const Home = () => {
     // get API  
     const [eventos, setEventos] = useState([])
     useEffect(() => {
-        axios.get("http://localhost:5000/Eventos")
+        axios.get("http://localhost:8080/Eventos")
             .then((response) => {
                 setEventos(
                     response.data
@@ -27,7 +28,7 @@ export const Home = () => {
 
     }, [])
 
-
+    
 
     const seta = {
         backgroundImage: `url(${setaIcon})`,
@@ -62,7 +63,7 @@ export const Home = () => {
     }
 
     return (
-        <>
+        <React.Fragment>
             <Menu />
             <section className="content" style={bgImage} >
                 <article>
@@ -72,7 +73,7 @@ export const Home = () => {
                     </section>
                 </article>
             </section>
-
+          
             <section className="contentForm" id="busca">
                 <form >
                     <h2>Filtros</h2>
@@ -113,6 +114,7 @@ export const Home = () => {
                     estados={selectEstado} />
             </main>
             <Footer />
-        </>
+            </React.Fragment>
+        
     )
 }
