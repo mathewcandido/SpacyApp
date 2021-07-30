@@ -1,168 +1,168 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Menu } from '../Components/Menu/Menu.jsx'
 import { Footer } from '../Components/footer/Footer.jsx'
 import './newevent.scss'
 import Swal from 'sweetalert2'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Input from "react-input-mask";
 
- 
+
 function alertanimation() {
- 
-Swal.fire({
-  position: 'top-center',
-  icon: 'success',
-  title: 'Evento Salvo com Sucesso',
-  showConfirmButton: false,
-  timer: 1500
-})
+
+  Swal.fire({
+    position: 'top-center',
+    icon: 'success',
+    title: 'Evento Salvo com Sucesso',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+const initialValue = {
+  Nome: '',
+  Estado: '',
+  Preço: '0',
+  Cidade: '',
+  Descrição: '',
+  Data: ''
 }
 
 export const NewEvent = () => {
+  const { id } = useParams()
 
-
+  const [values, setValues] = useState(id ? null : initialValue);
   const history = useHistory();
-  const routChange = () => {
+  console.log(id)
+  useEffect(() => {
+    if (id) {
+      axios.get(`http://localhost:8080/Eventos/${id}`)
+        .then((response) => {
+          console.log(response.data);
+          setValues(response.data);
+        })
+    }
+  }, [id]);
 
-    let path = '/'
-    setTimeout(() => {
-          history.push(path)
-    }, 3000);
-
-
+  function onChange(ev) {
+    const { name, value } = ev.target;
+    setValues({ ...values, [name]: value });
   }
-//settandos inputs
+  //settandos inputs
 
-  const [anypath,setAnypath] = useState()
-  const [name, setName] = useState('');
-  const [est, setEst] = useState('');
-  const [city, setCity] = useState('');
-  const [desc, setDesc] = useState('');
-  const [price, setPrice] = useState('');
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState(null);
-  const [dates, setDates] = useState('');
+
 
   const handleSubmit = (e) => {
-    setAnypath(routChange)
+
     alertanimation()
     e.preventDefault()
     setLoading(true);
     setIsError(false);
-    
-    const data = {
-      Nome: name,
-      Estado: est,
-      Preço: `R$:${price}`,
-      Cidade: city,
-      Descrição: desc,
-      Data: dates
-    }
+    console.log(values);
+    const method = id ? 'put' : 'post';
+    const url = id ? `http://localhost:8080/Eventos/${id}` : `http://localhost:8080/Eventos`
+    axios[method](url, values)
+      .then((response) => {
+        history.push('/');
+      });
 
-    axios.post('http://localhost:5000/Eventos', data).then(res => {
-      setData(res.data);
-      setName('');
-      setEst('');
-      setPrice('');
-      setCity('');
-      setDesc('');
-      setLoading(false);
-      setDates('')
-    }).catch(err => {
-      setLoading(false);
-      setIsError(true);
-    });
+
   }
-
   return (
     <>
       <Menu />
       <main className="container">
-        <form
-          action=""
-          method="post"
-          onSubmit={handleSubmit}>
-          <fieldset>
-            <p>PASSO 1</p>
-            <h2>Conte um pouco sobre seu evento</h2>
-            <input
-              type="text"
-              value={name}
-              placeholder="Título do evento"
-              required
-              onChange={
-                (e) => { setName(e.target.value) }
-              } />
-            <textarea
-              value={desc}
-              placeholder="Descrição do evento"
-              maxLength="100"
-              required
-              onChange={
-                (e) => { setDesc(e.target.value) }
-              } />
-          </fieldset>
-
-          <fieldset>
-            <p>PASSO 2</p>
-            <h2>Quando será e quanto custará o ingresso?</h2>
-            <div>
-              <Input
-                type="data"
-                guide={false}
-                showMask={false}
-                mask="99/99/9999" 
-                value={dates}
-                placeholder="Data do evento"
-                required
-                onChange={
-                  (e) => { setDates(e.target.value) }
-                } />
-
+        {!values ? (
+          <div>Carregando...</div>
+        ) : (
+          <form
+            action=""
+            method="post"
+            onSubmit={handleSubmit}>
+            <fieldset>
+              <p>PASSO 1</p>
+              <h2>Conte um pouco sobre seu evento</h2>
               <input
-                type="number"
-                value={price}
-                placeholder="Valor do ingresso"
-                required
-                onChange={
-                  (e) => { setPrice(e.target.value) }
-                } />
-            </div>
-          </fieldset>
 
-          <fieldset>
-            <p>PASSO 3</p>
-            <h2>Onde sera o evento?</h2>
-            <div>
-              <input
                 type="text"
-                value={est}
-                placeholder=" Estado"
+                id="Nome"
+                value={values.Nome}
+                name="Nome"
+                placeholder="Título do evento"
                 required
-                onChange={
-                  (e) => { setEst(e.target.value) }
-                } />
-              <input
-                type="text"
-                value={city}
-                placeholder="Cidade"
+                onChange={onChange} />
+              <textarea
+                value={values.Descrição}
+                id="Descrição"
+                name="Descrição"
+                placeholder="Descrição do evento"
+                maxLength="100"
                 required
-                onChange={
-                  (e) => { setCity(e.target.value) }
-                } />
-            </div>
+                onChange={onChange} />
 
-            <button
-              type="submit"
-              disable={loading}>
-              {loading ? 'Loading...' : 'Enviar'}
-            </button>
-            {isError && <small>Something went wrong. Please try again later.</small>}
+            </fieldset>
 
-          </fieldset>
-        </form>
+            <fieldset>
+              <p>PASSO 2</p>
+              <h2>Quando será e quanto custará o ingresso?</h2>
+              <div>
+                <Input
+                  type="data"
+                  guide={false}
+                  name="Data"
+                  id="Data"
+                  showMask={false}
+                  mask="99/99/9999"
+                  value={values.Data}
+                  placeholder="Data do evento"
+                  required
+                  onChange={onChange}
+                />
+
+                <input
+                  type="number"
+                  name="Preço"
+                  id="Preço"
+                  value={values.Preço}
+                  placeholder="Valor do ingresso"
+                  required
+                  onChange={onChange} />
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <p>PASSO 3</p>
+              <h2>Onde sera o evento?</h2>
+              <div>
+                <input
+                  type="text"
+                  name="Estado"
+                  id="Estado"
+                  value={values.Estado}
+                  placeholder=" Estado"
+                  required
+                  onChange={onChange} />
+                <input
+                  type="text"
+                  name="Cidade"
+                  id="Cidade"
+                  value={values.Cidade}
+                  placeholder="Cidade"
+                  required
+                  onChange={onChange} />
+              </div>
+
+              <button
+                type="submit"
+                disable={loading}>
+                {loading ? 'Loading...' : 'Enviar'}
+              </button>
+              {isError && <small>Something went wrong. Please try again later.</small>}
+
+            </fieldset>
+          </form>
+        )}
       </main>
       <Footer />
     </>

@@ -1,15 +1,6 @@
 {
   "Eventos": [
     {
-      "Nome": "Imersão Vue.js ",
-      "Estado": "SC",
-      "Preço": "R$:190",
-      "Cidade": "Blumenau",
-      "Descrição": "Tudo que você precisa saber para entrar no mercado o pé direito ! ",
-      "Data": "25/08/2021",
-      "id": 7
-    },
-    {
       "Nome": "Imersão python",
       "Estado": "SC",
       "Preço": "R$:200",
@@ -19,9 +10,9 @@
       "id": 8
     },
     {
-      "Nome": "Java Hackathon ",
+      "Nome": "Bootcamp Java  e Aws",
       "Estado": "SC",
-      "Preço": "R$:250",
+      "Preço": "180",
       "Cidade": "Blumenau",
       "Descrição": "Tudo que você precisa saber sobre a Linguagem mais usada no Mundo !",
       "Data": "15/08/2021",
@@ -44,6 +35,15 @@
       "Descrição": "O Melhor Evento do Ano espera por Você ! ",
       "Data": "15/08/2021",
       "id": 11
+    },
+    {
+      "Nome": "Hackathon IA",
+      "Estado": "SC",
+      "Preço": "250",
+      "Cidade": "Blumenau",
+      "Descrição": "A maior do Ano !",
+      "Data": "21/12/2021",
+      "id": 12
     }
   ]
 }

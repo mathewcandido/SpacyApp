@@ -1,13 +1,13 @@
-import React, { createContext, useState } from 'react';
+import React, {useState } from 'react';
 import agendaIcon from '../../assets/date.svg'
 import cifraoIcon from '../../assets/cipher.svg'
 import './result.scss'
 import axios from "axios";
-import { Editar } from '../../pages/Edite';
+
 import { Link } from 'react-router-dom';
 //import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
-import Datacontext from './Contexto';
+
 // Component Result..............................................
 
 
@@ -22,18 +22,8 @@ function alertanimation() {
     })
 }
 
-//passando o valor para o edite e chamando o component OK 
+
 export const Result = (props) => {
-
-
-
-    const editepath = (el) => {
-
-        <Editar />
-
-        console.log(el)
-    }
-
 
 
     const [del, setDell] = useState(props.api)
@@ -104,7 +94,7 @@ export const Result = (props) => {
                     <div>
                         <button onClick={() => deleting(el) || alertanimation()}>Delete</button>
 
-                        <button onClick={() => editepath(el)}><Link to={`/editar/${el.id}`}>Editar</Link></button>
+                        <button><Link to={`/editar/${el.id}`}>Editar</Link></button>
                     </div>
                 </div>
             </article>
