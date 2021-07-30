@@ -27,7 +27,7 @@ export const Home = () => {
             })
 
     }, [])
-
+        console.log(eventos)
     
 
     const seta = {
@@ -63,7 +63,7 @@ export const Home = () => {
     }
 
     return (
-        <React.Fragment>
+        <>
             <Menu />
             <section className="content" style={bgImage} >
                 <article>
@@ -114,7 +114,7 @@ export const Home = () => {
                     estados={selectEstado} />
             </main>
             <Footer />
-            </React.Fragment>
+            </>
         
     )
 }

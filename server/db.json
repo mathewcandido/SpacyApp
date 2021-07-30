@@ -1,15 +1,6 @@
 {
   "Eventos": [
     {
-      "Nome": "Imersão React.js com Next ",
-      "Estado": "SC",
-      "Preço": "R$:190",
-      "Cidade": "Blumenau",
-      "Descrição": "\no Framework Queridinho das empresas ! ",
-      "Data": "15/01/2022",
-      "id": 6
-    },
-    {
       "Nome": "Imersão Vue.js ",
       "Estado": "SC",
       "Preço": "R$:190",

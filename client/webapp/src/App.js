@@ -1,7 +1,13 @@
+import Datacontext from './Components/result/Contexto'
 import { Router } from './router'
+
 function App() {
   return (
-   <Router />
+
+
+    <Datacontext.Provider>
+      <Router />
+    </Datacontext.Provider>
   );
 }
 

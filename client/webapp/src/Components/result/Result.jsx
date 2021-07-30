@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import agendaIcon from '../../assets/date.svg'
 import cifraoIcon from '../../assets/cipher.svg'
 import './result.scss'
 import axios from "axios";
+import { Editar } from '../../pages/Edite';
 import { Link } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
-
+import Datacontext from './Contexto';
 // Component Result..............................................
 
 
@@ -20,14 +22,26 @@ function alertanimation() {
     })
 }
 
+//passando o valor para o edite e chamando o component OK 
 export const Result = (props) => {
+
+
+
+    const editepath = (el) => {
+
+        <Editar />
+
+        console.log(el)
+    }
+
+
 
     const [del, setDell] = useState(props.api)
     //aqui eu peguei o evento settado pois não daria para passar uma função dentro do useEffect
     React.useEffect(() => {
         setDell(props.api)
 
-    }, [])
+    }, [props.api])
 
     const deleting = (el) => {
         //criei uma const recebendo o parametro el para usa-la no filter 
@@ -36,17 +50,16 @@ export const Result = (props) => {
         axios.delete(`http://localhost:8080/Eventos/${el.id}`)
             .then((response) => {
                 //aqui estou fazendo um filter para renderizar sem os item que já foram exluidos 
-                setDell(del.filter(item => item.id !== deletedEvent.id))
-                
+             setDell(del.filter(item => item.id !== deletedEvent.id))
+
             }).catch(() => {
                 console.log(Error)
             })
     }
-    
+
 
     console.log(del)
     const EventosCadastrados = del
-
     //>>>>>>>>>>>>            FILTER          >>>>>>>>>>>>>>>>>>>>>>>>>>>
     const selectState = EventosCadastrados.filter((element) => {
 
@@ -89,10 +102,9 @@ export const Result = (props) => {
                     <img src={cifraoIcon} alt="icone cifrao" />
                     <p>{el.Preço}</p>
                     <div>
-                        <button onClick={() => deleting(el) || alertanimation() }>Delete</button>
+                        <button onClick={() => deleting(el) || alertanimation()}>Delete</button>
 
-                        <button><a href="
-                    ">Editar</a></button>
+                        <button onClick={() => editepath(el)}><Link to={`/editar/${el.id}`}>Editar</Link></button>
                     </div>
                 </div>
             </article>
