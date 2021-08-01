@@ -1,6 +1,6 @@
 # SpacyApp
-Projeto em Desenvolvimento
- *Desenvolvendo um WebAPP para cadastros Bootcamps*
+- Projeto em Desenvolvimento
+ * Desenvolvendo um WebAPP para cadastros Bootcamps
  
  - Para rodar o projeto no back e no front digite o comando yarn install node_modules logo em seguida yarn start
  - Dependências instaladas  
