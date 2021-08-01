@@ -1,11 +1,10 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import agendaIcon from '../../assets/date.svg'
 import cifraoIcon from '../../assets/cipher.svg'
 import './result.scss'
 import axios from "axios";
-
+import { DisappearedLoading} from 'react-loadingg';
 import { Link } from 'react-router-dom';
-//import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 // Component Result..............................................
@@ -40,7 +39,7 @@ export const Result = (props) => {
         axios.delete(`http://localhost:8080/Eventos/${el.id}`)
             .then((response) => {
                 //aqui estou fazendo um filter para renderizar sem os item que já foram exluidos 
-             setDell(del.filter(item => item.id !== deletedEvent.id))
+                setDell(del.filter(item => item.id !== deletedEvent.id))
 
             }).catch(() => {
                 console.log(Error)
@@ -113,21 +112,25 @@ export const Result = (props) => {
 
     return (
         <>
+            {!views().length ? (
+                <div><DisappearedLoading/></div>
+            ) : (
+                <section className="exibirResultados">
 
-            <section className="exibirResultados">
+                    <h3>{views().length ?
+                        `${views().length} Eventos encontrados` :
+                        `${views().length} Evento encontrado`}
+                    </h3>
 
-                <h3>{views().length ?
-                    `${views().length} Eventos encontrados` :
-                    `${views().length} Evento encontrado`}
-                </h3>
-
-                <div>
-                    {views()}
-                </div>
+                    <div>
+                        {views()}
+                    </div>
 
 
 
-            </section>
+                </section>
+            )}
+
         </>
     )
 }

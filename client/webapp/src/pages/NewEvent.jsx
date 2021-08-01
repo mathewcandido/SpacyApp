@@ -6,6 +6,7 @@ import './newevent.scss'
 import Swal from 'sweetalert2'
 import { useHistory, useParams } from 'react-router-dom';
 import Input from "react-input-mask";
+import {  CoffeeLoading } from 'react-loadingg';
 
 
 function alertanimation() {
@@ -47,14 +48,13 @@ export const NewEvent = () => {
     const { name, value } = ev.target;
     setValues({ ...values, [name]: value });
   }
-  //settandos inputs
+
 
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
 
   const handleSubmit = (e) => {
-
     alertanimation()
     e.preventDefault()
     setLoading(true);
@@ -64,7 +64,11 @@ export const NewEvent = () => {
     const url = id ? `http://localhost:8080/Eventos/${id}` : `http://localhost:8080/Eventos`
     axios[method](url, values)
       .then((response) => {
-        history.push('/');
+        setTimeout(() => {
+
+          history.push('/');
+        }, 500);
+
       });
 
 
@@ -74,7 +78,7 @@ export const NewEvent = () => {
       <Menu />
       <main className="container">
         {!values ? (
-          <div>Carregando...</div>
+          <div className="looping"><  CoffeeLoading  /></div>
         ) : (
           <form
             action=""

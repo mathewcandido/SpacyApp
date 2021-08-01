@@ -6,7 +6,11 @@ main.container{
     align-items:center;
     justify-content:center;
     margin: 10% -4% 10%;
-
+    .looping{
+        margin-top: 30px;
+        width: 80px;
+        height: 80px;
+    }
     form{
     width:60%;
     min-width: 400px;

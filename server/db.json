@@ -1,12 +1,12 @@
 {
   "Eventos": [
     {
-      "Nome": "Imersão python",
+      "Nome": "Imersão Python ",
       "Estado": "SC",
-      "Preço": "R$:200",
+      "Preço": "180",
       "Cidade": "Navegantes",
       "Descrição": "Tudo que você precisa saber da linguagem que mais cresce no Mundo !",
-      "Data": "29/11/21",
+      "Data": "29/11/2021",
       "id": 8
     },
     {
@@ -37,12 +37,12 @@
       "id": 11
     },
     {
-      "Nome": "Hackathon IA",
+      "Nome": "Imersão Java Spring",
       "Estado": "SC",
       "Preço": "250",
       "Cidade": "Blumenau",
-      "Descrição": "A maior do Ano !",
-      "Data": "21/12/2021",
+      "Descrição": "o melhor Evento do Ano !",
+      "Data": "15/08/2021",
       "id": 12
     }
   ]
