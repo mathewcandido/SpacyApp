@@ -10,21 +10,28 @@ import Swal from 'sweetalert2'
 // Component Result..............................................
 
 
-function alertanimation() {
-
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Evento Deletado com sucesso ',
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
-
 
 export const Result = (props) => {
 
+    const alertanimation = (el)=>{
 
+        Swal.fire({
+            title: 'Excluir o Evento ?',
+          
+            showDenyButton:true,
+            confirmButtonText: `Sim`,
+            denyButtonText:`Não`
+           
+          }).then((result) => {
+            if (result.isConfirmed) {
+                deleting(el)
+                Swal.fire('Excluído com Sucesso !', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('O Evento não foi Excluído !', '', 'info')
+            }
+          })
+    }
+    
     const [del, setDell] = useState(props.api)
     //aqui eu peguei o evento settado pois não daria para passar uma função dentro do useEffect
     React.useEffect(() => {
@@ -91,7 +98,7 @@ export const Result = (props) => {
                     <img src={cifraoIcon} alt="icone cifrao" />
                     <p>{el.Preço}</p>
                     <div>
-                        <button onClick={() => deleting(el) || alertanimation()}>Delete</button>
+                        <button onClick={() => alertanimation(el)}>Delete</button>
 
                         <button><Link to={`/editar/${el.id}`}>Editar</Link></button>
                     </div>
